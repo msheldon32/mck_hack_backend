@@ -16,9 +16,6 @@ from .models import *
 
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello world!")
-
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
