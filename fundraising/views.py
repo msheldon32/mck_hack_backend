@@ -46,3 +46,10 @@ class CampaignViewSet(viewsets.ModelViewSet):
     serializer_class = CampaignSerializer
     #permission_classes = [permissions.IsAuthenticated]
     #authentication_class = JSONWebTokenAuthentication
+
+
+class UserSubscriptionViewSet(viewsets.ModelViewSet):
+    queryset = UserSubscription.objects.all()
+    serializer_class = UserSubscriptionSerializer
+    #permission_classes = [permissions.IsAuthenticated]
+    #authentication_class = JSONWebTokenAuthentication

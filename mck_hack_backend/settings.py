@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# CSRF
+CSRF_TRUSTED_ORIGINS = ['https://localhost:3000', 'http://localhost:3000/*']
+CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SECURE = False
+CORS_URLS_REGEX = r"^/api/.*$"
 
 # Application definition
 
@@ -57,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'mck_hack_backend.urls'

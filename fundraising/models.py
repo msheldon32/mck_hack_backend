@@ -34,4 +34,8 @@ class CampaignGoal(models.Model):
     desc = models.CharField(max_length=256, null=True)
 
     goal_amt = models.DecimalField(decimal_places=2, max_digits=16, null=True)
-    campaign = models.ForeignKey(Campaign, on_delete=models.RESTRICT, null=True)
+    campaign = models.ForeignKey(Campaign, on_delete=models.RESTRICT, null=True, related_name="goal_campaign")
+
+class UserSubscription(models.Model):
+    campaign = models.ForeignKey(Campaign, on_delete=models.RESTRICT, null=True, related_name="subscription_campaign")
+    user = models.ForeignKey(Campaign, on_delete=models.RESTRICT, null=True, related_name="subscription_user")

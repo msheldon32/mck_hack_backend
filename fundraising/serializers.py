@@ -4,17 +4,24 @@ from django.contrib.auth.models import User
 
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ("pk","url", "username", "email")
-
-
 class ItemPledgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemPledge
         fields = ("pk", "url", "user", "item", "pledged_dt", "fulfilled", "pledged_amt")
 
+
+class UserSubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSubscription
+        fields = ("pk","url", "campaign", "user")
+
+
+class UserSerializer(serializers.ModelSerializer):
+    subscriptions = UserSubscriptionSerializer(source="subscription_user", many=True)
+
+    class Meta:
+        model = User
+        fields = ("pk","url", "username", "email", "subscriptions")
 
 class CampaignItemSerializer(serializers.ModelSerializer):
     pledges = ItemPledgeSerializer(source="pledge_item", many=True)

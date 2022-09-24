@@ -10,6 +10,7 @@ fundraising_router.register(r'item_pledge', ItemPledgeViewSet)
 fundraising_router.register(r'campaign_item', CampaignItemViewSet)
 fundraising_router.register(r'campaign_goal', CampaignGoalViewSet)
 fundraising_router.register(r'campaign', CampaignViewSet)
+fundraising_router.register(r'subscription', UserSubscriptionViewSet)
 
 
 urlpatterns = [
